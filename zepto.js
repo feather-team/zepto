@@ -2498,3 +2498,15 @@ window.$ === undefined && (window.$ = Zepto)
     }
 
 })()
+
+
+if(typeof define == 'function' && define.amd){
+    //seajs or requirejs environment
+    define([], function(){
+      return Zepto;
+    });
+}else if(typeof module === 'object' && typeof module.exports == 'object'){
+    module.exports = Zepto;
+}else{
+    window.$ = window.Zepto = Zepto;
+}
